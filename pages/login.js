@@ -37,7 +37,6 @@ export default function Login() {
                 </p>
               </motion.div>
             ) : (
-              /* eslint-disable-next-line react/no-unescaped-entities */
               <motion.div key={2} {...leftFade}>
                 <LoginForm />
                 {isSubmitted && (
@@ -46,7 +45,7 @@ export default function Login() {
                   </p>
                 )}
                 <p className="mt-3 text-center text-sm">
-                  Don&apos;t have an account?
+                  Dont have an account?
                   <a
                     className="ml-1 font-medium text-primary cursor-pointer transition-all delay-100 hover:text-pink-400 "
                     onClick={() => {
