@@ -103,7 +103,7 @@ export default function ServicesList({ setEditService }) {
           </thead>
           <tbody>
             {data.services.map((service) => (
-              <tr>
+              <tr key={service.name}>
                 <td className="py-4 text-sm text-primary whitespace-nowrap">
                   {service.name}
                 </td>
