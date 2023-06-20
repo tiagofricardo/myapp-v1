@@ -45,7 +45,7 @@ export default function Login() {
                   </p>
                 )}
                 <p className="mt-3 text-center text-sm">
-                  Don't have an account?
+                  Don&apos;t have an account?
                   <a
                     className="ml-1 font-medium text-primary cursor-pointer transition-all delay-100 hover:text-pink-400 "
                     onClick={() => {
