@@ -67,6 +67,6 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "postcss-import": "^15.1.0",
-    "prisma": "^4.14.0"
+    "prisma": "^4.16.0"
   }
 }
