@@ -1,0 +1,49 @@
+.fc-popover {
+    @apply !z-50
+}
+
+.fc-popover.fc-more-popover {
+  @apply rounded-md p-2 max-w-xs 
+}
+
+.fc-theme-standard .fc-popover-header {
+    @apply bg-transparent
+}
+.fc-popover-header span{
+    @apply  text-primary 
+}
+
+.fc .fc-col-header-cell-cushion {
+    @apply text-secondary
+}
+
+.fc-popover-body b {
+    @apply text-secondary
+}
+
+.fc-theme-standard .fc-list{
+    @apply w-96 text-xs sm:text-sm sm:w-auto h-screen 
+}
+
+.fc .fc-toolbar-title {
+    @apply text-xs sm:text-xl
+}
+
+.fc .fc-button-primary {
+    @apply select-none !rounded-lg font-bold uppercase  text-white shadow-md shadow-light transition-all hover:shadow-lg hover:shadow-light focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-primary text-xs m-1 border-0 border-transparent hover:bg-secondary hover:border-transparent active:!bg-secondary active:!border-0 focus:!shadow-none
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    @apply bg-secondary text-xs border-transparent hover:border-transparent 
+}
+
+
+.fc .fc-button-primary:not(:disabled):active:focus {
+    @apply active:shadow-none
+}
+
+.fc .fc-day-today {
+    @apply !bg-ultralight
+}
+
+

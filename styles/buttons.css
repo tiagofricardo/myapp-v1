@@ -1,0 +1,16 @@
+.btn-primary {
+  @apply  block w-full select-none !rounded-lg bg-primary py-3 px-6 text-center align-middle text-xs tracking-wider font-bold uppercase text-white shadow-md shadow-light transition-all hover:shadow-lg hover:shadow-light focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none;
+}
+
+.btn-secondary {
+  @apply block w-full select-none rounded-lg bg-transparent py-3 px-4 text-center align-middle text-xs tracking-wider font-bold uppercase text-primary active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+}
+.navActiveLink {
+@apply p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 text-primary
+}
+
+.navInactiveLink {
+@apply p-2.5 flex rounded-md gap-6 items-center md:cursor-pointer cursor-default duration-300 hover:text-primary
+}
+
+

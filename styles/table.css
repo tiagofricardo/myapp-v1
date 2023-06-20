@@ -1,0 +1,54 @@
+{/*********Table*********/}
+.tableRecords {
+    @apply w-full;
+}
+
+.tableRecords thead {
+    @apply border-b pb-4 w-full
+}
+
+.tableRecords th {
+    @apply px-4 py-2 text-start
+}
+
+.tableRecords tr {
+    @apply bg-transparent hover:bg-ultralight
+}
+.tableRecords td {
+    @apply px-4
+}
+
+{/*********Pagination*********/}
+.paginationContent {
+    @apply flex gap-8 justify-center items-center mt-4 border-t 
+}
+
+.paginationLink {
+    @apply  px-2 border-t border-transparent hover:border-primary hover:text-primary 
+}
+
+.paginationActive {
+    @apply font-medium text-primary  border-t border-primary
+}
+
+.paginationNav {
+    @apply  hover:text-primary 
+}
+
+.paginationDisabled {
+    @apply text-grayTextLight cursor-none
+}
+
+{/*********Cards*********/}
+
+.cardRecord {
+    @apply flex flex-row h-24 border shadow-lg rounded-md
+}
+
+.cardRecord Image {
+    @apply bg-cover block h-auto w-32 flex-none
+}
+
+.cardRecord-text {
+    @apply flex flex-col justify-between w-full h-full p-2 gap-2
+}

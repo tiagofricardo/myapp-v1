@@ -1,0 +1,85 @@
+.react-datepicker {
+    @apply h-56 w-[350px] !font-poppins !flex justify-between 
+}
+
+.react-datepicker__header{
+    @apply !bg-ultralight h-14 !border-b-0
+}
+
+.react-datepicker__day {
+    @apply !w-7 hover:!bg-ultralight
+}
+
+.react-datepicker__day--today {
+    @apply !text-primary
+}
+
+.react-datepicker__day--selected {
+    @apply !bg-tertiary !font-bold !text-white
+}
+
+.react-datepicker__current-month {
+    @apply !text-secondary
+}
+
+.react-datepicker__month-container {
+    @apply flex-grow
+}
+
+.react-datepicker__time {
+    @apply !h-1 
+}
+
+.react-datepicker__header--time {
+    @apply flex justify-center items-center 
+}
+
+.react-datepicker-time__header {
+    @apply !text-secondary
+}
+
+.react-datepicker__time-box {
+    @apply !h-56
+}
+
+.react-datepicker__day-name {
+    @apply !w-7
+}
+
+.react-datepicker__time-list-item--selected,
+.react-datepicker__day--keyboard-selected {
+    @apply !bg-tertiary
+}
+
+
+.react-datepicker__time-list-item  {
+    @apply hover:!bg-ultralight hover:!text-grayText
+}
+
+.react-datepicker__time-list {
+    @apply scrollbar-track-white scrollbar-thumb-ultralight scrollbar-thin 
+}
+
+.react-datepicker__time-container  {
+    @apply !w-[86px] 
+}
+
+.react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::before {
+    @apply !-bottom-[0.6px] 
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before {
+    @apply !-top-[0.6px] 
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
+    @apply !top-[1px] 
+}
+
+.react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::after {
+    @apply !bottom-[1px] 
+}
+
+.react-datepicker__triangle::after {
+    @apply !border-b-ultralight
+}

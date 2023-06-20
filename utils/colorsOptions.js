@@ -1,0 +1,98 @@
+export const colorOptions = [
+  {
+    id: 1,
+    label: "Red",
+    value: "#fca5a5",
+    component: <div className=" w-3 h-3 rounded-full bg-red-300" />,
+  },
+  {
+    id: 2,
+    label: "Orange",
+    value: "#fdba74",
+    component: <div className=" w-3 h-3 rounded-full bg-orange-300" />,
+  },
+  {
+    id: 3,
+    label: "Amber",
+    value: "#fcd34d",
+    component: <div className=" w-3 h-3 rounded-full bg-amber-300" />,
+  },
+  {
+    id: 4,
+    label: "Yellow",
+    value: "#fde047",
+    component: <div className=" w-3 h-3 rounded-full bg-yellow-300" />,
+  },
+  {
+    id: 5,
+    label: "Lime",
+    value: "#bef264",
+    component: <div className=" w-3 h-3 rounded-full bg-lime-300" />,
+  },
+  {
+    id: 6,
+    label: "Green",
+    value: "#86efac",
+    component: <div className=" w-3 h-3 rounded-full bg-green-300" />,
+  },
+  {
+    id: 7,
+    label: "Emerald",
+    value: "#6ee7b7",
+    component: <div className=" w-3 h-3 rounded-full bg-emerald-300" />,
+  },
+  {
+    id: 8,
+    label: "Cyan",
+    value: "#67e8f9",
+    component: <div className=" w-3 h-3 rounded-full bg-cyan-300" />,
+  },
+  {
+    id: 9,
+    label: "Sky",
+    value: "#7dd3fc",
+    component: <div className=" w-3 h-3 rounded-full bg-sky-300" />,
+  },
+  {
+    id: 10,
+    label: "Blue",
+    value: "#93c5fd",
+    component: <div className=" w-3 h-3 rounded-full bg-blue-300" />,
+  },
+  {
+    id: 11,
+    label: "Indigo",
+    value: "#a5b4fc",
+    component: <div className=" w-3 h-3 rounded-full bg-indigo-300" />,
+  },
+  {
+    id: 12,
+    label: "Violet",
+    value: "#c4b5fd",
+    component: <div className=" w-3 h-3 rounded-full bg-violet-300" />,
+  },
+  {
+    id: 13,
+    label: "Purple",
+    value: "#d8b4fe",
+    component: <div className=" w-3 h-3 rounded-full bg-purple-300" />,
+  },
+  {
+    id: 14,
+    label: "Fuchsia",
+    value: "#f0abfc",
+    component: <div className=" w-3 h-3 rounded-full bg-fuchsia-300" />,
+  },
+  {
+    id: 15,
+    label: "Pink",
+    value: "#f9a8d4",
+    component: <div className=" w-3 h-3 rounded-full bg-pink-300" />,
+  },
+  {
+    id: 16,
+    label: "Rose",
+    value: "#fda4af",
+    component: <div className=" w-3 h-3 rounded-full bg-rose-300" />,
+  },
+];
