@@ -15,6 +15,7 @@ export default function Login() {
   };
 
   return (
+    /* eslint react/no-unescaped-entities */
     <div>
       <div className=" m-auto w-full bg-white rounded-lg shadow dark:border sm:mt-16 sm:max-w-md xl:p-0">
         <div className="p-6 space-y-4 sm:space-y-6 sm:p-8">
