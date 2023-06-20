@@ -37,6 +37,7 @@ export default function Login() {
                 </p>
               </motion.div>
             ) : (
+              /* eslint-disable-next-line react/no-unescaped-entities */
               <motion.div key={2} {...leftFade}>
                 <LoginForm />
                 {isSubmitted && (
