@@ -2,7 +2,7 @@ import CalendarJobs from "@/components/calendar/CalendarJobs";
 import Layout from "@/components/common/Layout";
 import axios from "axios";
 
-export default function ({ servicesOptions }) {
+export default function Calendar({ servicesOptions }) {
   return (
     <Layout>
       <CalendarJobs servicesOptions={servicesOptions} />

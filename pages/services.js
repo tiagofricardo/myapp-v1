@@ -6,7 +6,7 @@ import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export default function ({ categoriesOptions }) {
+export default function ServicesPage({ categoriesOptions }) {
   const [isEditOn, setIsEditOn] = useState(false);
   const [editService, setEditService] = useState();
 
