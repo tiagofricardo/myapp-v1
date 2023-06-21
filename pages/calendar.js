@@ -12,7 +12,7 @@ export default function Calendar({ servicesOptions }) {
 
 export async function getServerSideProps() {
   try {
-    const response = await axios.get("http://localhost:3000/api/services");
+    const response = await axios.get(`${process.env.APP_URL}/api/services`);
     const servicesOptions = response.data.services.map(({ id, name }) => ({
       label: name,
       value: id,

@@ -44,7 +44,7 @@ export default function ServicesPage({ categoriesOptions }) {
 
 export async function getServerSideProps() {
   try {
-    const response = await axios.get("http://localhost:3000/api/categories");
+    const response = await axios.get(`${process.env.APP_URL}/api/categories`);
     const categoriesOptions = response.data.categories.map(({ id, name }) => ({
       label: name,
       value: id,
