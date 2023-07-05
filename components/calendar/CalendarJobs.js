@@ -10,23 +10,31 @@ import fetcher from "@/libs/fetcher";
 import useSWR from "swr";
 import AppModal from "../common/Modal";
 import { pt } from "date-fns/locale";
-import { format } from "date-fns";
+import { format, getMonth, getYear, subMonths, addMonths } from "date-fns";
 import eventCoU from "@/utils/eventCoU";
 import { toasterOptions } from "@/utils/toaster/toasterOptions";
 import { toast } from "react-toastify";
 
-export default function CalendarJobs({ servicesOptions }) {
+export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
   const calendarRef = useRef(null);
-  const [currView, setCurrView] = useState("dayGridMonth");
   let isTab = useMediaQuery({ query: "(max-width: 768px)" });
+  const [currView, setCurrView] = useState(!isTab ? "dayGridMonth" : "listDay");
+  const [startDate, setStartDate] = useState(subMonths(new Date(), 1));
+  const [endDate, setEndDate] = useState(addMonths(new Date(), 1));
+
   const { data, error, isLoading, mutate } = useSWR(
-    `/api/calendar/events?month=06&year=2023`,
+    `/api/calendar/events?startdate=${startDate}&enddate=${endDate}`,
     fetcher
   );
   const [confirmationModalIsOn, setConfirmationModalIsOn] = useState(false);
   const [confirmationModalData, setConfirmationModalData] = useState();
   const [eventModalIsOn, setEventModalIsOn] = useState(false);
   const [modalEventData, setmodalEventData] = useState();
+
+  useEffect(() => {
+    !isTab ? setCurrView("listDay") : setCurrView("dayGridMonth");
+    calendarRef.current.getApi().changeView(currView);
+  }, [isTab]);
 
   function toggleEventModal(isOpen) {
     setEventModalIsOn(isOpen);
@@ -69,6 +77,13 @@ export default function CalendarJobs({ servicesOptions }) {
     }
   }
 
+  function handleDatesSet(data) {
+    const startDate = new Date(getYear(data?.start), getMonth(data?.start), 1);
+    const endDate = new Date(getYear(data?.end), getMonth(data?.end) + 1, 0);
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }
+
   async function onChangeEvent() {
     const data = {
       name: confirmationModalData.event.title,
@@ -93,6 +108,15 @@ export default function CalendarJobs({ servicesOptions }) {
     }
   }
 
+  function onCancelChangeEvent() {
+    const existingEvent = calendarRef.current
+      .getApi()
+      .getEventById(confirmationModalData?.event.id);
+    existingEvent.setStart(new Date(confirmationModalData?.oldEvent?.start));
+    existingEvent.setEnd(new Date(confirmationModalData?.oldEvent?.end));
+    toggleConfirmationModal(false);
+  }
+
   function renderEventContent(eventInfo) {
     return (
       <>
@@ -101,7 +125,15 @@ export default function CalendarJobs({ servicesOptions }) {
             <b>{eventInfo.timeText}</b>
           </div>
           <div className="">
-            <i className="text-tertiary">{eventInfo.event.title}</i>
+            <i
+              className={
+                currView === "timeGridWeek" || currView === "timeGridDay"
+                  ? ""
+                  : "text-tertiary"
+              }
+            >
+              {eventInfo.event.title}
+            </i>
             {console.log(eventInfo.event.extendedProps)}
             {eventInfo.event.extendedProps.name && (
               <p className="truncate">{eventInfo.event.extendedProps.name}</p>
@@ -153,6 +185,8 @@ export default function CalendarJobs({ servicesOptions }) {
         eventChange={handleEventChange}
         eventClick={handleEventClick}
         viewDidMount={handleViewChange}
+        datesSet={handleDatesSet}
+        businessHours={availabilityTimes}
       />
       <EventModal
         isOpen={eventModalIsOn}
@@ -168,7 +202,7 @@ export default function CalendarJobs({ servicesOptions }) {
       />
       <AppModal
         isOpen={confirmationModalIsOn}
-        onClose={toggleConfirmationModal}
+        onClose={onCancelChangeEvent}
         title={`Event ${confirmationModalData?.event?.title}`}
         description={
           <>

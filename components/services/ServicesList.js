@@ -3,23 +3,29 @@ import fetcher from "@/libs/fetcher";
 import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import AppModal from "@/components/common/Modal";
 import { Spinner } from "../common/Spinner";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { toasterOptions } from "@/utils/toaster/toasterOptions";
+import { useMediaQuery } from "react-responsive";
 
 export default function ServicesList({ setEditService }) {
+  let isTab = useMediaQuery({ query: "(max-width: 640px)" });
   const [currentPage, setCurrentPage] = useState(1);
-  const perPage = 10;
+  const [perPage, setPerPage] = useState(isTab ? 5 : 10);
   const { data, error, isLoading, mutate } = useSWR(
     `/api/services?page=${currentPage}&perPage=${perPage}`,
     fetcher
   );
   const [serviceSelected, setServiceSelected] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    isTab ? setPerPage(5) : setPerPage(10);
+  }, [isTab]);
 
   if (isLoading) {
     return (
@@ -68,7 +74,7 @@ export default function ServicesList({ setEditService }) {
     <>
       <div className="pr-5 ">
         <div className="flex justify-between items-center mb-10">
-          <h3 className="mb-0">List of existing services</h3>
+          <h3 className="mb-0">List of services</h3>
           <div className="">
             <button
               className="btn-primary"
@@ -80,59 +86,88 @@ export default function ServicesList({ setEditService }) {
             </button>
           </div>
         </div>
-        <table className="tableRecords">
-          <thead>
-            <tr>
-              <th>
-                <h4 className="m-0">Name</h4>
-              </th>
-              <th className=" hidden lg:block">
-                <h4 className="m-0">Description</h4>
-              </th>
-              <th>
-                <h4 className="m-0">Price</h4>
-              </th>
-              <th>
-                <h4 className="m-0">Time</h4>
-              </th>
-              <th>
-                <h4 className="m-0">Category</h4>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.services.map((service) => (
-              <tr key={service.name}>
-                <td className="py-4 text-sm text-primary whitespace-nowrap">
-                  {service.name}
-                </td>
-                <td className="py-4 text-sm max-w-[100px] hidden lg:block">
-                  <p className=" truncate">{service.description}</p>
-                </td>
-                <td className="py-4 text-sm ">{service.price} €</td>
-                <td className="py-4 text-sm ">{service.time} min </td>
-                <td className="py-4 text-sm ">{service.category.name}</td>
-                <td className="flex gap-1">
-                  <button
-                    onClick={() => {
-                      setEditService(service);
-                    }}
-                    className="text-primary"
-                  >
-                    <FiEdit3 size={18} />
-                  </button>
-                  <button
-                    onClick={() => toggleModal(true, service)}
-                    className="ml-2 text-primary"
-                  >
-                    <MdDeleteOutline size={20} />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+        <div class="container">
+          <table class="tableRecords">
+            <thead>
+              {isTab ? (
+                <>
+                  {data.services.map((service) => (
+                    <tr>
+                      <th>
+                        <h4 className="m-0">Name</h4>
+                      </th>
+                      <th className=" hidden lg:block">
+                        <h4 className="m-0">Description</h4>
+                      </th>
+                      <th>
+                        <h4 className="m-0">Price</h4>
+                      </th>
+                      <th>
+                        <h4 className="m-0">Time</h4>
+                      </th>
+                      <th>
+                        <h4 className="m-0">Category</h4>
+                      </th>
+                      <th></th>
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                <tr>
+                  <th>
+                    <h4 className="m-0">Name</h4>
+                  </th>
+                  <th className=" hidden lg:block">
+                    <h4 className="m-0">Description</h4>
+                  </th>
+                  <th>
+                    <h4 className="m-0">Price</h4>
+                  </th>
+                  <th>
+                    <h4 className="m-0">Time</h4>
+                  </th>
+                  <th>
+                    <h4 className="m-0">Category</h4>
+                  </th>
+                  <th></th>
+                </tr>
+              )}
+            </thead>
+            <tbody>
+              {data.services.map((service) => (
+                <tr key={service.name}>
+                  <td className="py-2 sm:py-4 text-primary whitespace-nowrap">
+                    {service.name}
+                  </td>
+                  <td className="py-2 sm:py-4 max-w-[100px] hidden lg:block">
+                    <p className="truncate">{service.description}</p>
+                  </td>
+                  <td className="py-2 sm:py-4">{service.price} €</td>
+                  <td className="py-2 sm:py-4">{service.time} min </td>
+                  <td className="py-2 sm:py-4">{service.category.name}</td>
+                  <td className="flex gap-1">
+                    <button
+                      onClick={() => {
+                        setEditService(service);
+                      }}
+                      className="text-primary"
+                    >
+                      <FiEdit3 size={18} />
+                    </button>
+                    <button
+                      onClick={() => toggleModal(true, service)}
+                      className="ml-2 text-primary"
+                    >
+                      <MdDeleteOutline size={20} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <AppModal
           isOpen={modalIsOpen}
           onClose={toggleModal}

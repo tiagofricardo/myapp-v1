@@ -22,6 +22,7 @@ export default function CategoriesList({ editCategory }) {
   );
   let isLarge = useMediaQuery({ query: "(max-width: 1024px)" });
 
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen w-full ">
@@ -86,7 +87,7 @@ export default function CategoriesList({ editCategory }) {
     <>
       <div className="pr-5 ">
         <div className="flex justify-between items-center mb-10">
-          <h3 className="mb-0">List of existing categories</h3>
+          <h3 className="mb-0">List of categories</h3>
           <div className="">
             <button
               className="btn-primary"
@@ -138,13 +139,11 @@ export default function CategoriesList({ editCategory }) {
                     ""
                   )}
 
-                  <td className="py-4 text-sm text-primary whitespace-nowrap ">
+                  <td className="py-4 text-primary whitespace-nowrap ">
                     {data.name}
                   </td>
 
-                  <td className="py-4 text-sm text-justify">
-                    {data.description}
-                  </td>
+                  <td className="py-4 text-justify">{data.description}</td>
                   <td className="">
                     <div className="">
                       <button

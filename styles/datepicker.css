@@ -83,3 +83,14 @@
 .react-datepicker__triangle::after {
     @apply !border-b-ultralight
 }
+
+{/*********Table*********/}
+
+.react-datepicker--time-only {
+    @apply w-auto !font-poppins !flex justify-between 
+}
+
+.react-datepicker__time-list {
+    @apply !h-40
+}
+

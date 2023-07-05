@@ -44,7 +44,7 @@ model Account {
 model Category {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String? @unique
-   colorRef String?
+  colorRef String?
   description String? 
   image String?
   categories Service[]
@@ -76,4 +76,26 @@ model Event {
   phonenumber Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+
+enum Day {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+model Availability {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  day Day @default(MONDAY)
+  startTime DateTime?
+  endTime DateTime?
+  isActive Boolean?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
 }

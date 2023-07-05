@@ -1,22 +1,42 @@
 {/*********Table*********/}
-.tableRecords {
-    @apply w-full;
-}
 
-.tableRecords thead {
-    @apply border-b pb-4 w-full
+.tableRecords {
+    @apply w-full flex flex-row flex-nowrap rounded-lg overflow-hidden sm:inline-table
 }
 
 .tableRecords th {
-    @apply px-4 py-2 text-start
+    @apply py-2 text-start h-8 sm:px-4
 }
 
-.tableRecords tr {
-    @apply bg-transparent hover:bg-ultralight
-}
 .tableRecords td {
-    @apply px-4
+    @apply h-8 text-sm sm:px-4
 }
+
+.tableRecords thead {
+    @apply border-b-0 border-r  pb-4 w-40 sm:w-full sm:border-b sm:border-r-0
+}
+
+.tableRecords thead tr {
+    @apply flex flex-col flex-nowrap sm:table-row 
+}
+
+.tableRecords thead tr th:last-child {
+    @apply mb-5 sm:mb-0
+}
+
+.tableRecords tbody {
+    @apply flex-1 sm:flex-none
+}
+
+.tableRecords tbody tr {
+    @apply flex flex-col flex-nowrap ml-2 sm:ml-0 sm:table-row  
+}
+
+
+.tableRecords tbody tr td:last-child {
+    @apply mb-5 sm:mb-0
+}
+
 
 {/*********Pagination*********/}
 .paginationContent {
@@ -28,7 +48,7 @@
 }
 
 .paginationActive {
-    @apply font-medium text-primary  border-t border-primary
+    @apply font-medium text-primary  border-t    border-primary
 }
 
 .paginationNav {

@@ -19,7 +19,7 @@ export default function Layout({ children }) {
     <div className="flex gap-5 ">
       <Sidebar onSidebarChange={onSidebarOpen} />
       <div
-        className={`max-w-screen-lg flex-1 mt-16 md:mt-10 ${
+        className={` overflow-x-hidden max-w-screen-lg flex-1 mt-16 md:mt-10 ${
           isStretch ? "md:ml-[256px]" : "sm:ml-[64px]"
         } `}
       >

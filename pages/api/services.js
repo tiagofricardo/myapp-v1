@@ -98,7 +98,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const service = await createService();
-      return res.status(200).json("Serviço criado com sucesso");
+      return res.status(200).json("Service created successfully");
     } catch (err) {
       return res.status(400).json(err.message);
     }
@@ -107,7 +107,7 @@ export default async function handler(req, res) {
   if (req.method === "PUT") {
     try {
       const service = await updateService();
-      return res.status(200).json("Service created successfully");
+      return res.status(200).json("Service updated successfully");
     } catch (err) {
       return res.status(400).json(err.message);
     }

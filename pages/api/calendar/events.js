@@ -66,43 +66,43 @@ export default async function handler(req, res) {
     }
   }
 
-  if (req.method === "GET") {
-    const { month, year } = req.query;
+    if (req.method === "GET") {
+      const { startdate, enddate } = req.query;
 
-    try {
-      const eventsWithServices = await prisma.event.findMany({
-        where: {
-          start: {
-            gte: new Date(`${year}-${month}-01`),
-            lt: new Date(new Date(`${year}-${month}-01`).setMonth(month)),
-          },
-        },
-        include: {
-          service: {
-            include: {
-              category: true,
+      try {
+        const eventsWithServices = await prisma.event.findMany({
+          where: {
+            start: {
+              gte: new Date(startdate),
+              lt: new Date(enddate),
             },
           },
-        },
-      });
+          include: {
+            service: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        });
 
-      const events = eventsWithServices.map((event) => ({
-        id: event.id,
-        title: event.service.name,
-        name: event.name,
-        email: event.email,
-        phonenumber: event.phonenumber,
-        start: event.start,
-        end: event.end,
-        serviceId: event.service.id,
-        color: event.service.category.colorRef,
-      }));
+        const events = eventsWithServices.map((event) => ({
+          id: event.id,
+          title: event.service.name,
+          name: event.name,
+          email: event.email,
+          phonenumber: event.phonenumber,
+          start: event.start,
+          end: event.end,
+          serviceId: event.service.id,
+          color: event.service.category.colorRef,
+        }));
 
-      return res.status(200).json(events);
-    } catch (err) {
-      return res.status(400).json(err.message);
+        return res.status(200).json(events);
+      } catch (err) {
+        return res.status(400).json(err.message);
+      }
     }
-  }
 
   if (req.method === "POST") {
     try {

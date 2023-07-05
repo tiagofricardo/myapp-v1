@@ -211,7 +211,42 @@ export const endDatePicker_validation = {
   name: "endDatePicker",
   label: "End Date",
   id: "endDatePickerId",
-  startDateValidation: "",
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+  },
+};
+
+export const startTimePicker_validation = {
+  name: "startTimePicker",
+  label: "",
+  id: "startTimePickerId",
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+  },
+};
+
+export const endTimePicker_validation = {
+  name: "endTimePicker",
+  label: "",
+  id: "endTimePickerId",
+  validation: {
+    required: {
+      value: true,
+      message: "Required",
+    },
+  },
+};
+
+export const switch_validation = {
+  name: "switch",
+  label: "",
+  id: "switch",
   validation: {
     required: {
       value: true,
