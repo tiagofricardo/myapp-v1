@@ -7,7 +7,6 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { pt } from "date-fns/locale";
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
 
 export const InputTimePicker = ({
   name,
@@ -20,7 +19,6 @@ export const InputTimePicker = ({
 }) => {
   const {
     formState: { errors },
-
     control,
     watch,
     getValues,
@@ -47,7 +45,7 @@ export const InputTimePicker = ({
     return compareDate.getTime() < timeValue.getTime();
   };
 
-  function validateEndTime(inputValue) {
+  function validateEndTime() {
     const allInputs = Object.entries(getValues()).map(([name, value]) => ({
       name,
       value,

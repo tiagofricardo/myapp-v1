@@ -27,7 +27,7 @@ export default function Sidebar({ onSidebarChange }) {
     {
       name: "Settings",
       icon: MdOutlineEditCalendar,
-      menus: ["Work Days", "Vacations"],
+      menus: ["Availability", "Holidays"],
     },
   ];
 

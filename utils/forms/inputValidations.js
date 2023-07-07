@@ -221,7 +221,7 @@ export const endDatePicker_validation = {
 
 export const startTimePicker_validation = {
   name: "startTimePicker",
-  label: "",
+  label: "Start Date",
   id: "startTimePickerId",
   validation: {
     required: {

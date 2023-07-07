@@ -7,7 +7,6 @@ import { AnimatePresence } from "framer-motion";
 
 export const InputSwitch = ({
   name,
-  label,
   id,
   defaultvalue,
   validation,

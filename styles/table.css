@@ -44,19 +44,19 @@
 }
 
 .paginationLink {
-    @apply  px-2 border-t border-transparent hover:border-primary hover:text-primary 
+    @apply  px-2 border-t border-transparent hover:border-primary hover:text-primary
 }
 
 .paginationActive {
-    @apply font-medium text-primary  border-t    border-primary
+    @apply font-medium text-primary  border-t border-primary mt-[-0.5px]
 }
 
 .paginationNav {
     @apply  hover:text-primary 
+    
 }
-
 .paginationDisabled {
-    @apply text-grayTextLight cursor-none
+    @apply text-grayTextLight cursor-none 
 }
 
 {/*********Cards*********/}

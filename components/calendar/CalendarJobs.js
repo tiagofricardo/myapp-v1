@@ -26,6 +26,7 @@ export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
     `/api/calendar/events?startdate=${startDate}&enddate=${endDate}`,
     fetcher
   );
+
   const [confirmationModalIsOn, setConfirmationModalIsOn] = useState(false);
   const [confirmationModalData, setConfirmationModalData] = useState();
   const [eventModalIsOn, setEventModalIsOn] = useState(false);
@@ -50,19 +51,16 @@ export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
   }
 
   function handleDateClick(data) {
-    console.log("DATA CLICK", data);
     setmodalEventData(data);
     toggleEventModal(true);
   }
 
   function handleEventChange(events) {
-    console.log(events);
     toggleConfirmationModal(true);
     setConfirmationModalData(events);
   }
 
   function handleEventClick({ event }) {
-    const teste = { ...event };
     setmodalEventData(event);
     toggleEventModal(true);
   }
@@ -134,7 +132,6 @@ export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
             >
               {eventInfo.event.title}
             </i>
-            {console.log(eventInfo.event.extendedProps)}
             {eventInfo.event.extendedProps.name && (
               <p className="truncate">{eventInfo.event.extendedProps.name}</p>
             )}
@@ -143,6 +140,7 @@ export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
       </>
     );
   }
+
   return (
     <>
       <FullCalendar

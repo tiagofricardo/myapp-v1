@@ -27,6 +27,7 @@ export const InputDateTimePicker = ({
     watch,
     getValues,
   } = useFormContext();
+  console.log(defaultValue);
 
   const [startDateSelected, setStartDateSelected] = useState();
   useEffect(() => {

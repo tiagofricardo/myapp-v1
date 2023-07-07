@@ -16,7 +16,7 @@ import { InputTimePicker } from "@/components/forms/InputTimePicker";
 import { Spinner } from "@/components/common/Spinner";
 import { MdDeleteOutline } from "react-icons/md";
 
-export default function Workdays({ availabilityData }) {
+export default function Availability({ availabilityData }) {
   const [pageState, setPageState] = useState({
     error: "",
     processingForm: false,
@@ -34,7 +34,6 @@ export default function Workdays({ availabilityData }) {
   const [workTimes, setWorkTimes] = useState(availabilityData);
 
   function onAddTimeFields(event, day) {
-    console.log(workTimes[day]);
     event.preventDefault();
     if (!workTimes[day]) {
       setWorkTimes((prevState) => {
@@ -69,7 +68,6 @@ export default function Workdays({ availabilityData }) {
 
   function onDeleteTimeField(event, day, id) {
     event.preventDefault();
-
     setWorkTimes((prevState) => {
       const updatedTimes = prevState[day].filter((time) => time.id !== id);
       return {
@@ -98,9 +96,11 @@ export default function Workdays({ availabilityData }) {
 
   async function handleAvailabilityChange(formData) {
     setPageState((old) => ({ ...old, processingForm: true, error: "" }));
+
     let data = [];
     let activeDays = [];
     let inactiveDays = [];
+
     for (let i = 0; i < days.length; i++) {
       const day = days[i];
       if (!activeDays[day] && formData[`switch-${day.toLowerCase()}`]) {

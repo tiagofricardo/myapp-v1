@@ -87,8 +87,8 @@ export default function ServicesList({ setEditService }) {
           </div>
         </div>
 
-        <div class="container">
-          <table class="tableRecords">
+        <div className="container">
+          <table className="tableRecords">
             <thead>
               {isTab ? (
                 <>
