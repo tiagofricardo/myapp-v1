@@ -22,10 +22,10 @@ export default function CalendarJobs({ servicesOptions, availabilityTimes }) {
   const [startDate, setStartDate] = useState(subMonths(new Date(), 1));
   const [endDate, setEndDate] = useState(addMonths(new Date(), 1));
 
-  const { data, error, isLoading, mutate } = useSWR(
-    `/api/calendar/events?startdate=${startDate}&enddate=${endDate}`,
-    fetcher
-  );
+    const { data, error, isLoading, mutate } = useSWR(
+      `/api/calendar/events?startdate=${startDate}&enddate=${endDate}`,
+      fetcher
+    );
 
   const [confirmationModalIsOn, setConfirmationModalIsOn] = useState(false);
   const [confirmationModalData, setConfirmationModalData] = useState();

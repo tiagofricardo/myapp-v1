@@ -100,6 +100,25 @@ export default async function handler(req, res) {
       }
     }
 
+    const { startdate, enddate } = req.query;
+
+    if (startdate || enddate) {
+      try {
+        const holidays = await prisma.holidays.findMany({
+          where: {
+            start: {
+              gte: new Date(startdate),
+              lt: new Date(enddate),
+            },
+          },
+        });
+
+        return res.status(200).json({ holidays });
+      } catch (err) {
+        return res.status(400).json(err);
+      }
+    }
+
     try {
       const { page, perPage } = req.query;
       const totalCount = await prisma.holidays.count();
